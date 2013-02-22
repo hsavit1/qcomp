@@ -67,6 +67,19 @@ lin.tensorProduct = function(s1, s2) {
 	return tensorP;
 }
 
+lin.dualProduct = function(s1, s2) {
+	if(s1.length != s2.length) return false;
+
+	var product = [];
+	for(var i = 0; i < s1.length; i++) {
+		var row = [];
+		for(var j = 0; j < s2.length; j++) {
+			row.push(s1[i] * s2[j]);
+		}
+		product.push(row);
+	}
+	return product;
+}
 
 
 lin.isVector = function(candidate) {
