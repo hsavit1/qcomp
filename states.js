@@ -13,14 +13,9 @@ function lin() {
 }
 
 lin.normalize = function(vector) {
-	var total = 0;
-	var elements = vector;
+	var norm = Math.sqrt(lin.dot(vector, vector));
 	for(var i in elements) {
-		total += elements[i];
-	}
-
-	for(var i in elements) {
-		elements[i] = elements[i] / total;
+		elements[i] = elements[i] / norm;
 	}
 	return elements;
 }
