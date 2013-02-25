@@ -1,8 +1,24 @@
-function pureState(elements) {
+function pureState(init) {
+	var initDirac = function(init) {
+		var vector = [];
+		// ket
+		if(init[0] == '|' && init[init.length-1] == '>') {
+			for(var i=1; i < init.length - 1; i++) {
+				vector.push(parseInt(init[i]));
+			}
+		}
+		// bra
+		else if(init[0] == '<' && init[init.length] == '|') {
 
-	var _vector = elements;
+		}	
+		return vector;
+	};
 
-	this.getElements = function() {
+	var _vector = [];
+	if(init instanceof Array) _vector = init;
+	else if(typeof(init) == 'string') { _vector = initDirac(init); }
+
+		this.getElements = function() {
 		return lin.normalize(_vector);
 	}
 }
@@ -14,6 +30,7 @@ function lin() {
 
 lin.normalize = function(vector) {
 	var norm = Math.sqrt(lin.dot(vector, vector));
+	var elements = vector;
 	for(var i in elements) {
 		elements[i] = elements[i] / norm;
 	}
