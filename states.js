@@ -18,9 +18,14 @@ function pureState(init) {
 	if(init instanceof Array) _vector = init;
 	else if(typeof(init) == 'string') { _vector = initDirac(init); }
 
-		this.getElements = function() {
+	this.getElements = function() {
 		return lin.normalize(_vector);
 	}
+}
+
+pureState.prototype = {
+
+
 }
 
 
