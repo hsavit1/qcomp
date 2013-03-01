@@ -42,8 +42,12 @@ c.prototype = {
 
 	},			  
 
+	normsq: function() {
+		return (this.re*this.re + this.im*this.im);
+	},
+
 	modulus: function() {
-		return Math.sqrt(this.re*this.re + this.im*this.im);
+		return Math.sqrt(this.normsq());
 	},
 
 	conjugate: function() {
@@ -58,6 +62,8 @@ c.prototype = {
 	equals: function(x) {
 		var z = c.from(x);
 		return (this.re == z.re && this.im == z.im);
+	},
+
 	toString: function() {
 		var str = '';
 		str += this.re;
