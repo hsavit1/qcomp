@@ -13,12 +13,12 @@ lin.vectorDot = function(s1, s2) {
 
 lin.matrixDot = function(m, v) {
 	if(m.length != v.length) return false;
-
+	
 	var out = [];
 	for(var i in m) {
 		var el = new c(0, 0);
 		for(var j in m[i]) {
-			el.add(m[i][j].multiply(v[j]));
+			el = el.add(m[i][j].multiply(v[j]));
 		}
 		out.push(el);
 	}
@@ -27,6 +27,7 @@ lin.matrixDot = function(m, v) {
 }
 
 lin.dot = function(a, b) {
+	if( (a instanceof c) && (b instanceof c) ) return a.multiply(b);
 	if(lin.isMatrix(a) && lin.isVector(b)) return lin.matrixDot(a,b);
 	else return lin.vectorDot(a,b);
 }
